@@ -19,6 +19,6 @@ desktop.ini
 .wbapp_*
 *.genie
 
-# Old/backup images
-*-old.jpg
-*-old.png
+# Old/backup images (DO NOT exclude actual website assets)
+# *-old.jpg
+# *-old.png
