@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=0.75">
+<title>Headquarters · RITONG — Bespoke Furniture &amp; Turnkey FF&amp;E Solutions</title>
+<style>
+  :root{--color-primary:#6B513F;--color-secondary:#B9A77D;--color-bg:#FBF8F2;--color-ink:#1F1A14;--color-mute:#6E6357;--color-line:#E5DCC9;--color-panel:#E8E4DC;--ff-heading:Georgia,"Times New Roman",serif;--ff-body:"Helvetica Neue",Arial,"Segoe UI",sans-serif}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--color-bg);color:var(--color-ink);font-family:var(--ff-body);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%;height:auto}
+
+  .nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:24px 48px;background:var(--color-bg);border-bottom:1px solid var(--color-line);transition:padding 0.3s ease}
+  .nav-brand{display:flex;align-items:center;gap:0}
+  .nav-logo{height:38px;width:auto;display:block}
+  .nav-links{position:absolute;left:50%;transform:translateX(-50%);display:flex;gap:36px;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-primary)}
+  .nav-links a{padding:4px 0;border-bottom:1px solid transparent;transition:border-color 0.2s}
+  .nav-links a:hover{border-color:currentColor}
+  .nav-links a.is-active{border-color:currentColor}
+  .nav-cta{font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#FBF8F2;background:var(--color-primary);border:1px solid var(--color-primary);padding:9px 20px;transition:all 0.3s ease}
+  .nav-cta:hover{background:#5A4336;border-color:#5A4336}
+  .nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:transparent;border:0;cursor:pointer;padding:0;color:var(--color-primary)}
+  .nav-toggle span{display:block;width:22px;height:1.5px;background:currentColor;margin:0 auto;transition:transform 0.3s,opacity 0.3s}
+  .nav--open .nav-toggle span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+  .nav--open .nav-toggle span:nth-child(2){opacity:0}
+  .nav--open .nav-toggle span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+  .hq-wrap{display:grid;grid-template-columns:1fr 1fr;padding-top:73px}
+  .hq-info{background:#fff;padding:80px 72px;display:flex;flex-direction:column;justify-content:center}
+  .hq-info-inner{max-width:460px}
+  .hq-label{font-size:11px;letter-spacing:0.35em;text-transform:uppercase;color:var(--color-secondary);margin-bottom:22px}
+  .hq-name{font-family:var(--ff-heading);font-size:clamp(28px,3.2vw,42px);font-weight:400;color:var(--color-primary);line-height:1.15;letter-spacing:0.005em;margin-bottom:54px}
+  .hq-detail{margin-bottom:30px}
+  .hq-detail .dt{font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--color-secondary);margin-bottom:8px}
+  .hq-detail .dd{font-size:15px;line-height:1.8;color:var(--color-mute)}
+  .hq-detail a{color:var(--color-primary);border-bottom:1px solid var(--color-line);transition:border-color 0.2s}
+  .hq-detail a:hover{border-color:var(--color-primary)}
+  .hq-social{margin-top:46px;padding-top:36px;border-top:1px solid var(--color-line)}
+  .hq-social .dt{font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--color-secondary);margin-bottom:16px}
+  .hq-social-links{display:flex;gap:18px;align-items:center}
+  .hq-social-links a{color:var(--color-mute);transition:color 0.2s}
+  .hq-social-links a:hover{color:var(--color-primary)}
+  .hq-social-links svg{width:18px;height:18px;fill:currentColor}
+
+  .hq-visual{background:var(--color-panel);display:flex;align-items:center;justify-content:center;padding:64px}
+  .hq-visual img{width:100%;max-width:560px;box-shadow:0 24px 64px rgba(0,0,0,0.12)}
+
+  .hq-branch{display:grid;grid-template-columns:1fr 1fr;background:#fff;border-top:1px solid var(--color-line)}
+  .hq-branch-info{padding:80px 72px;display:flex;flex-direction:column;justify-content:center}
+  .hq-branch-info-inner{max-width:460px}
+  .hq-branch-label{font-size:11px;letter-spacing:0.35em;text-transform:uppercase;color:var(--color-secondary);margin-bottom:22px}
+  .hq-branch-name{font-family:var(--ff-heading);font-size:clamp(28px,3.2vw,42px);font-weight:400;color:var(--color-primary);line-height:1.15;letter-spacing:0.005em;margin-bottom:16px}
+  .hq-branch-name-zh{font-size:15px;color:var(--color-mute);letter-spacing:0.05em;margin-bottom:46px}
+  .hq-branch-info .hq-detail{margin-bottom:30px}
+  .hq-branch-visual{background:var(--color-panel);display:flex;align-items:center;justify-content:center;padding:64px}
+  .hq-branch-visual img{width:100%;max-width:560px;box-shadow:0 24px 64px rgba(0,0,0,0.12)}
+
+  .footer{padding:48px 0;border-top:1px solid var(--color-line);text-align:center;background:var(--color-bg)}
+  .footer-logo-img{height:38px;width:auto;max-width:55%;margin:0 auto 18px;display:block}
+  .footer-tag{font-size:11px;letter-spacing:0.3em;text-transform:uppercase;color:var(--color-mute);margin-bottom:24px}
+  .footer-meta{font-size:12px;color:var(--color-mute);letter-spacing:0.05em}
+  .footer-meta a{margin:0 14px}
+  .footer-meta a:hover{color:var(--color-primary)}
+  .footer-meta.copyright{margin-top:16px}
+
+  @media (max-width: 1024px){
+    .hq-wrap{grid-template-columns:1fr}
+    .hq-info{padding:72px 48px;min-height:auto}
+    .hq-info-inner{max-width:520px}
+    .hq-visual{padding:56px 48px}
+    .hq-visual img{max-width:480px}
+    .hq-branch{grid-template-columns:1fr}
+    .hq-branch-info{padding:72px 48px}
+    .hq-branch-info-inner{max-width:520px}
+    .hq-branch-visual{padding:56px 48px}
+    .hq-branch-visual img{max-width:480px}
+  }
+  @media (max-width: 960px){
+    .nav{padding:16px 28px}
+    .nav-links{position:fixed;top:0;left:0;right:0;bottom:0;background:var(--color-bg);flex-direction:column;align-items:center;justify-content:center;gap:28px;transform:translateY(-100%);opacity:0;pointer-events:none;transition:transform 0.4s ease,opacity 0.4s ease;z-index:40}
+    .nav--open .nav-links{transform:translateY(0);opacity:1;pointer-events:auto}
+    .nav-toggle{display:flex;z-index:50}
+    .hq-info{padding:64px 28px}
+    .hq-visual{padding:48px 28px}
+  }
+  @media (max-width: 600px){
+    .container{padding:0 20px}
+    .nav{padding:14px 20px}
+    .nav-logo{height:30px}
+    .hq-info{padding:56px 20px}
+    .hq-name{margin-bottom:40px}
+    .hq-detail{margin-bottom:24px}
+    .hq-social{margin-top:36px;padding-top:28px}
+    .hq-branch-info{padding:56px 20px}
+    .hq-branch-name{margin-bottom:32px}
+    .hq-branch-name-zh{margin-bottom:36px}
+    .hq-branch-visual{padding:48px 20px}
+    .footer{padding:40px 20px}
+    .footer-logo-img{height:32px}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <a class="nav-brand" href="index.html" aria-label="RITONG — Home">
+    <img class="nav-logo nav-logo--dark" src="assets/logo-nav-dark.png" alt="RITONG">
+  </a>
+  <nav class="nav-links" id="nav-links">
+    <a href="about.html">About</a>
+    <a href="index.html#services">Services</a>
+    <a href="projects.html">Projects</a>
+    <a href="headquarters.html" class="is-active">Contact</a>
+  </nav>
+  <a class="nav-cta" href="mailto:monica.tung@rtfurnishing.com">Discuss Your Project</a>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<main class="hq-wrap">
+  <section class="hq-info">
+    <div class="hq-info-inner">
+      <div class="hq-label">Headquarters</div>
+      <h1 class="hq-name">RITONG<br>Home Furnishing</h1>
+
+      <div class="hq-detail">
+        <div class="dt">Address</div>
+        <div class="dd">No. 264 Jiaju Road, Houjie Town<br>Dongguan, Guangdong, China</div>
+      </div>
+
+      <div class="hq-detail">
+        <div class="dt">Telephone</div>
+        <div class="dd"><a href="tel:+8676985992666">+86 769 8599 2666</a> / <a href="tel:+8676985085998">+86 769 8508 5998</a></div>
+      </div>
+
+      <div class="hq-detail">
+        <div class="dt">Email</div>
+        <div class="dd">
+          <a href="mailto:monica.tung@rtfurnishing.com">monica.tung@rtfurnishing.com</a><br>
+          <a href="mailto:export@rtfurnishing.com">export@rtfurnishing.com</a><br>
+          <a href="mailto:export01@rtfurnishing.com">export01@rtfurnishing.com</a>
+        </div>
+      </div>
+
+      <div class="hq-detail">
+        <div class="dt">Showroom Hours</div>
+        <div class="dd">Monday — Saturday, 9:00 AM — 6:00 PM<br>Sunday by appointment</div>
+      </div>
+
+      <div class="hq-social">
+        <div class="dt">Follow Us On</div>
+        <div class="hq-social-links">
+          <a href="#" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="#" target="_blank" rel="noopener" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+          </a>
+          <a href="#" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 18c-1.46 0-2.89-.39-4.14-1.12l-.3-.18-3.11.82.83-3.04-.2-.31a8.05 8.05 0 0 1-1.24-4.3c0-4.46 3.63-8.09 8.1-8.09 2.16 0 4.19.84 5.72 2.37a8.06 8.06 0 0 1 2.37 5.72c0 4.46-3.63 8.09-8.1 8.09zm4.41-5.96c-.24-.12-1.42-.7-1.64-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1.01-.37-1.92-1.18-.71-.63-1.19-1.41-1.33-1.65-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.19-.46-.39-.4-.54-.41-.14 0-.3-.02-.46-.02-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2 0 1.18.86 2.32.98 2.48.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.46-.07 1.42-.58 1.62-1.14.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28z"/></svg>
+          </a>
+          <a href="#" target="_blank" rel="noopener" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+          <a href="#" target="_blank" rel="noopener" aria-label="Pinterest">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hq-visual" aria-label="RITONG Headquarters building">
+    <img src="assets/headquarters-building-old.jpg" alt="RITONG Headquarters in Dongguan">
+  </section>
+</main>
+
+<section class="hq-branch" aria-label="RITONG Foshan showroom">
+    <div class="hq-branch-info">
+      <div class="hq-branch-info-inner">
+        <div class="hq-branch-label">Branch Showroom</div>
+        <h2 class="hq-branch-name">Foshan RITONG<br>International Home<br>Furnishing Gallery</h2>
+
+        <div class="hq-detail">
+          <div class="dt">Address</div>
+          <div class="dd">No. 187, Shibu, Longjiang Industrial Avenue<br>Longjiang Town, Shunde District<br>Foshan, Guangdong, China</div>
+        </div>
+
+        <div class="hq-detail">
+          <div class="dt">Telephone</div>
+          <div class="dd"><a href="tel:+8676985992666">+86 769 8599 2666</a></div>
+        </div>
+
+        <div class="hq-detail">
+          <div class="dt">Email</div>
+          <div class="dd"><a href="mailto:export@rtfurnishing.com">export@rtfurnishing.com</a><br><a href="mailto:service@rtfurnishing.com">service@rtfurnishing.com</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hq-branch-visual">
+      <img src="assets/foshan-showroom.jpg" alt="RITONG Foshan Showroom">
+    </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <img class="footer-logo-img" src="assets/logo-nav-dark.png" alt="RITONG Home Furnishing">
+    <div class="footer-tag">Bespoke Furniture &amp; Turnkey FF&amp;E Solutions</div>
+    <div class="footer-meta">
+      <a href="about.html">About</a>
+      <a href="index.html#services">Services</a>
+      <a href="projects.html">Projects</a>
+      <a href="headquarters.html">Contact</a>
+    </div>
+    <div class="footer-meta copyright">&copy; 2026 RITONG. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var nav = document.querySelector('.nav');
+  var navToggle = document.querySelector('.nav-toggle');
+  if(navToggle){
+    navToggle.addEventListener('click', function(){
+      var open = nav.classList.toggle('nav--open');
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    document.querySelectorAll('.nav-links a').forEach(function(a){
+      a.addEventListener('click', function(){
+        nav.classList.remove('nav--open');
+        navToggle.setAttribute('aria-expanded','false');
+      });
+    });
+  }
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=0.75">
+<title>Mianyang Windsor Mansion Residence · Project | ritong</title>
+<style>
+  :root{
+    --color-primary:#6B513F;
+    --color-secondary:#B9A77D;
+    --color-bg:#FBF8F2;
+    --color-ink:#1F1A14;
+    --color-mute:#6E6357;
+    --color-line:#E5DCC9;
+    --ff-heading: Georgia, "Times New Roman", serif;
+    --ff-body: "Helvetica Neue", Arial, "Segoe UI", sans-serif;
+    --ff-mono: "SF Mono", "Menlo", monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--color-bg);color:var(--color-ink);font-family:var(--ff-body);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%;height:auto}
+  .container{max-width:1280px;margin:0 auto;padding:0 48px}
+  .narrow{max-width:880px;margin:0 auto;padding:0 48px}
+  .nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:20px 48px;background:rgba(251,248,242,0.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--color-line)}
+  .nav-brand{display:flex;align-items:center;gap:14px}
+  .nav-logo{height:44px;width:auto;display:block}
+  .nav-monogram{height:44px;width:auto;display:block}
+  .nav-links{position:absolute;left:50%;transform:translateX(-50%);display:flex;gap:36px;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-primary)}
+  .nav-links a{padding:4px 0;border-bottom:1px solid transparent;transition:border-color 0.2s}
+  .nav-links a:hover{border-color:var(--color-primary)}
+  .nav-links a.is-active{border-color:var(--color-primary)}
+  .nav-cta{font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:#FBF8F2;background:var(--color-primary);padding:10px 22px;border-radius:1px}
+  .nav-cta:hover{background:#5A4336}
+  .nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:transparent;border:0;cursor:pointer;padding:0;color:var(--color-primary)}
+  .nav-toggle span{display:block;width:22px;height:1.5px;background:currentColor;margin:0 auto;transition:transform 0.3s,opacity 0.3s}
+  .nav--open .nav-toggle span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+  .nav--open .nav-toggle span:nth-child(2){opacity:0}
+  .nav--open .nav-toggle span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+  .hero{position:relative;height:100vh;min-height:680px;overflow:hidden;margin-top:0}
+  .hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%}
+  .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.15) 0%,rgba(0,0,0,0) 35%,rgba(0,0,0,0) 60%,rgba(0,0,0,0.55) 100%)}
+  .hero-text{position:absolute;left:0;right:0;bottom:96px;text-align:center;color:#FBF8F2;padding:0 32px}
+  .hero-eyebrow{font-size:11px;letter-spacing:0.4em;text-transform:uppercase;opacity:0.85;margin-bottom:24px}
+  .hero-title{font-family:var(--ff-heading);font-size:clamp(40px,6vw,76px);font-weight:400;line-height:1.1;letter-spacing:0.02em;margin-bottom:18px}
+  .hero-loc{font-size:13px;letter-spacing:0.28em;text-transform:uppercase;opacity:0.8}
+  .crumb{padding:40px 0 0;display:flex;justify-content:space-between;align-items:center;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-mute)}
+  .crumb a:hover{color:var(--color-primary)}
+  .narrative{padding:84px 0 64px;text-align:center}
+  .narrative p{font-family:var(--ff-heading);font-style:italic;font-size:clamp(20px,2.4vw,28px);line-height:1.55;color:var(--color-primary);max-width:820px;margin:0 auto;font-weight:400}
+  .info-block{border-top:1px solid var(--color-line);border-bottom:1px solid var(--color-line);padding:48px 0;margin:0 0 80px}
+  .info-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+  .info-cell{padding:8px 24px;border-right:1px solid var(--color-line)}
+  .info-cell:last-child{border-right:none}
+  .info-label{font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--color-mute);margin-bottom:10px}
+  .info-value{font-family:var(--ff-heading);font-size:18px;color:var(--color-ink);line-height:1.35}
+  .intro{padding:0 0 96px}
+  .intro .label{font-size:10px;letter-spacing:0.4em;text-transform:uppercase;color:var(--color-secondary);margin-bottom:20px;text-align:center}
+  .intro p{font-size:17px;line-height:1.85;color:var(--color-ink)}
+  .intro p + p{margin-top:1.2em}
+  .space{padding:0 0 120px}
+  .space-header{display:flex;align-items:baseline;justify-content:space-between;border-top:1px solid var(--color-line);padding-top:32px;margin-bottom:36px}
+  .space-num{font-family:var(--ff-mono);font-size:13px;color:var(--color-secondary);letter-spacing:0.15em}
+  .space-title{font-family:var(--ff-heading);font-size:30px;color:var(--color-primary);font-weight:400;line-height:1.2}
+  .space-title small{display:block;font-size:13px;color:var(--color-mute);letter-spacing:0.22em;text-transform:uppercase;margin-top:8px;font-family:var(--ff-body)}
+  .space-caption{font-family:var(--ff-heading);font-style:italic;color:var(--color-mute);font-size:15px;text-align:right;max-width:380px;line-height:1.6}
+  .space-image{margin-bottom:32px;overflow:hidden}
+  .space-image.portrait img{width:auto;max-height:780px;margin:0 auto}
+  .space-image.landscape img{width:100%}
+  .space-body{max-width:780px;margin:0 auto;font-size:16px;line-height:1.85;color:var(--color-ink)}
+  .space-body .credit{margin-top:16px;font-size:12px;color:var(--color-mute);text-align:right;font-style:italic}
+  .space.split .space-image{width:55%;margin-left:auto}
+  .space.split.reverse .space-image{width:55%;margin-left:0;margin-right:auto}
+  .space.full .space-image{width:100%}
+  .project-nav{border-top:1px solid var(--color-line);padding:64px 0;display:flex;justify-content:space-between;align-items:center}
+  .project-nav-link{font-family:var(--ff-heading);font-size:18px;color:var(--color-primary);display:flex;flex-direction:column;gap:6px;transition:opacity 0.2s}
+  .project-nav-link.next{text-align:right}
+  .project-nav-link .label{font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--color-mute);font-family:var(--ff-body)}
+  .project-nav-link:hover{opacity:0.7}
+  .project-nav-link .arrow{display:inline-block;transition:transform 0.2s}
+  .project-nav-link.prev:hover .arrow{transform:translateX(-4px)}
+  .project-nav-link.next:hover .arrow{transform:translateX(4px)}
+  .cta{padding:120px 0;text-align:center;background:linear-gradient(180deg,var(--color-bg) 0%,#F1EADC 100%);margin-top:0}
+  .cta .label{font-size:10px;letter-spacing:0.4em;text-transform:uppercase;color:var(--color-secondary);margin-bottom:20px}
+  .cta h2{font-family:var(--ff-heading);font-size:clamp(28px,3.5vw,44px);font-weight:400;color:var(--color-primary);line-height:1.3;margin-bottom:24px;max-width:680px;margin-left:auto;margin-right:auto}
+  .cta p{font-size:16px;color:var(--color-mute);max-width:540px;margin:0 auto 40px;line-height:1.7}
+  .cta-button{display:inline-block;font-size:12px;letter-spacing:0.25em;text-transform:uppercase;color:#FBF8F2;background:var(--color-primary);padding:18px 48px;border:1px solid var(--color-primary);transition:all 0.2s}
+  .cta-button:hover{background:transparent;color:var(--color-primary)}
+  .footer{padding:64px 0 36px;border-top:1px solid var(--color-line);text-align:center}
+  .footer-logo-img{height:38px;width:auto;max-width:55%;margin:0 auto 18px;display:block}
+  .footer-tag{font-size:11px;letter-spacing:0.3em;text-transform:uppercase;color:var(--color-mute);margin-bottom:24px}
+  .footer-meta{font-size:12px;color:var(--color-mute);letter-spacing:0.05em}
+  .footer-meta a{margin:0 12px}
+  @media (max-width: 960px){
+    .container,.narrow{padding:0 28px}
+    .nav{padding:16px 28px}
+        .nav-toggle{display:flex}
+    .nav-links{position:fixed;top:0;left:0;right:0;transform:none;display:none;flex-direction:column;gap:0;background:rgba(251,248,242,0.98);backdrop-filter:blur(10px);padding:88px 24px 24px;border-bottom:1px solid var(--color-line);color:var(--color-primary)}
+    .nav-links a{font-size:13px;letter-spacing:0.18em;padding:16px 0;border-bottom:1px solid var(--color-line)}
+    .nav--open .nav-links{display:flex}
+
+    .info-grid{grid-template-columns:repeat(2,1fr);gap:32px 0}
+    .info-cell{border-right:none;padding:0 16px}
+    .info-cell:nth-child(2n){border-left:1px solid var(--color-line)}
+    .space.split .space-image,.space.split.reverse .space-image{width:100%;margin:0}
+    .hero-text{bottom:60px}
+  }
+
+  @media (max-width: 600px){
+    .container,.narrow{padding:0 20px}
+    .nav{padding:14px 20px}
+    .nav-links{padding:84px 20px 20px}
+    .nav-logo,.nav-monogram{height:30px}
+    .nav-wordmark{font-size:18px}
+    .nav-cta{padding:8px 14px;font-size:10px}
+    .page-hero{padding:130px 0 48px}
+    .page-hero .eyebrow{font-size:10px;letter-spacing:0.24em;margin-bottom:18px}
+    .page-hero h1{font-size:clamp(28px,8vw,40px)}
+    .page-hero p{font-size:14px;line-height:1.75}
+    .hero{min-height:560px}
+    .hero-title{font-size:clamp(26px,7vw,40px)}
+    .hero-eyebrow{font-size:9px;letter-spacing:0.26em;margin-bottom:16px}
+    .hero-loc{font-size:11px;letter-spacing:0.2em}
+    .hero-text{bottom:64px;padding:0 20px}
+    .about-intro h2{font-size:clamp(22px,6vw,28px)}
+    .about-intro p{font-size:14px;line-height:1.75}
+    .brands{padding:0 0 64px}
+    .brands-header{margin-bottom:36px}
+    .brands-header .eyebrow{font-size:10px;letter-spacing:0.24em}
+    .brands-header h3{font-size:clamp(20px,6vw,26px)}
+    .brands-grid{gap:16px}
+    .brand-item{padding:22px 14px}
+    .brand-item .name{font-size:16px}
+    .brand-item .desc{font-size:12px;line-height:1.6}
+    .founder{padding:64px 0}
+    .founder-quote{font-size:clamp(18px,5.5vw,24px)}
+    .founder-body{font-size:14px}
+    .founder-label{font-size:10px;letter-spacing:0.26em}
+    .timeline{padding:64px 0}
+    .timeline-header{margin-bottom:40px}
+    .timeline-header .eyebrow{font-size:10px;letter-spacing:0.24em}
+    .timeline-header h3{font-size:clamp(20px,6vw,26px)}
+    .proj-grid{gap:20px}
+    .cta{padding:56px 0}
+    .cta .label{font-size:10px;letter-spacing:0.3em;margin-bottom:18px}
+    .cta h2{font-size:clamp(22px,6.5vw,30px);margin-bottom:20px}
+    .cta p{font-size:13px;line-height:1.7;margin-bottom:32px}
+    .cta-button{padding:14px 36px;font-size:11px}
+    .footer{padding:56px 0 32px}
+    .footer-logo-img{height:32px}
+    .footer-tag{font-size:10px;letter-spacing:0.22em;margin-bottom:22px}
+    .footer-meta{font-size:11px}
+    .footer-meta a{margin:0 8px}
+  }
+</style>
+</head>
+<body>
+
+<!-- Top Nav -->
+<header class="nav">
+  <a class="nav-brand" href="../../index.html" aria-label="ritong — Home">
+    <img class="nav-monogram" src="assets/logo-monogram.png" alt="ritong">
+  </a>
+  <nav class="nav-links">
+    <a href="../../about.html">About</a>
+    <a href="../../index.html#services">Services</a>
+    <a href="../../projects.html" class="is-active" aria-current="page">Projects</a>
+    <a href="../../headquarters.html">Contact</a>
+  </nav>
+  <a class="nav-cta" href="../../headquarters.html">Book Consultation</a>
+  <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <img class="hero-img" src="assets/01-hero-master.jpg" alt="Mianyang Windsor Mansion Residence — Master Bedroom">
+  <div class="hero-overlay"></div>
+  <div class="hero-text">
+    <div class="hero-eyebrow">Private Residence</div>
+    <h1 class="hero-title">Mianyang Windsor Mansion Residence</h1>
+    <div class="hero-loc">Mianyang · Sichuan · China</div>
+  </div>
+</section>
+
+<!-- Breadcrumb / Back -->
+<div class="container">
+  <div class="crumb">
+    <a href="../../projects.html">← Back to Projects</a>
+    <span>03 / 04</span>
+  </div>
+</div>
+
+<!-- Narrative subtitle -->
+<section class="narrow">
+  <div class="narrative">
+    <p>A romantic French residence in Mianyang — where cream panelling, gold detailing and pink silk bring the warmth of an eighteenth-century French boudoir into a contemporary Chinese home.</p>
+  </div>
+</section>
+
+<!-- Info Block -->
+<section class="container">
+  <div class="info-block">
+    <div class="info-grid">
+      <div class="info-cell">
+        <div class="info-label">Project Type</div>
+        <div class="info-value">Private Residence</div>
+      </div>
+      <div class="info-cell">
+        <div class="info-label">Location</div>
+        <div class="info-value">Mianyang, China</div>
+      </div>
+      <div class="info-cell">
+        <div class="info-label">Year</div>
+        <div class="info-value">2019</div>
+      </div>
+      <div class="info-cell">
+        <div class="info-label">Style</div>
+        <div class="info-value">French Neo-Classical</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Intro prose -->
+<section class="narrow">
+  <div class="intro">
+    <div class="label">The Project</div>
+    <p>This private residence in Mianyang's Windsor Mansion takes French neo-classical architecture and turns it warmer, softer, more romantic. Cream-painted panelling with gilt detailing, deep-buttoned headboards in powder-pink silk, and hand-painted chinoiserie accents compose a home that feels closer to an eighteenth-century French boudoir than a modern Chinese house. ritong delivered the project as a full turnkey package — bespoke furniture, fixed millwork and complete soft furnishing across master bedroom, sitting room, guest bedroom, boudoir, daughter's room and lounge — built on a consistent material language of cream, gold, pink and a single deep-green velvet accent.</p>
+    <p>The owners, a couple with two school-age daughters, asked for a home that would feel like a "private palace" for their family — formal enough to host, soft enough to live in. The design team answered by giving every principal bedroom the same ceremonial headboard treatment, then letting the supporting rooms step down in scale, from the jewel-box master suite to the lighter, floral-canopied daughter's room. The result is a house that is unmistakably ritong, unmistakably French, and unmistakably the family's own.</p>
+  </div>
+</section>
+
+<!-- Space 1: Master Bedroom -->
+<section class="container">
+  <div class="space full">
+    <div class="space-header">
+      <div>
+        <div class="space-num">01</div>
+        <h2 class="space-title">The Master Bedroom<small>An Eighteenth-Century Reverie</small></h2>
+      </div>
+      <p class="space-caption">A cream-painted headboard in deep-buttoned pink silk anchors the room; a crystal chandelier crowns it.</p>
+    </div>
+    <div class="space-image landscape">
+      <img src="assets/02-master-bedroom.jpg" alt="Master bedroom — pink tufted headboard and crystal chandelier">
+    </div>
+    <div class="narrow space-body">
+      <p>The master bedroom is the heart of the home. A floor-to-ceiling headboard in deep-buttoned powder-pink silk, framed in a hand-carved and gilt panel, anchors the room; the bed itself sits on a low upholstered platform in the same fabric. Walls are entirely in cream-painted panelling with gilt linework, the central panel behind the bed painted by hand with a chinoiserie scene in soft greens and pinks. The crystal chandelier is bespoke, redrawn from a Louis XVI model in a lighter, more delicate silhouette. A pair of hand-painted bedside tables in cream and gold flank the bed, each topped in a single pink-veined marble slab.</p>
+      <p class="credit">Headboard &amp; panelling — hand-carved, hand-painted · chandelier, bespoke crystal</p>
+    </div>
+  </div>
+</section>
+
+<!-- Space 2: Sitting Room -->
+<section class="container">
+  <div class="space split">
+    <div class="space-header">
+      <div>
+        <div class="space-num">02</div>
+        <h2 class="space-title">The Sitting Room<small>Gilded Frame, Green Velvet</small></h2>
+      </div>
+      <p class="space-caption">A pair of deep-buttoned green velvet sofas face each other beneath a hand-carved gilt arch.</p>
+    </div>
+    <div class="space-image landscape">
+      <img src="assets/03-sitting-room.jpg" alt="Sitting room — green velvet sofa and gilt frame">
+    </div>
+    <div class="narrow space-body">
+      <p>The sitting room is the most theatrical space in the house. A pair of deep-buttoned sofas in emerald-green velvet face each other across a low marble coffee table; behind them, a hand-carved gilt arch — flanked by two more — frames the central wall, where a hand-painted chinoiserie panel continues the master bedroom's garden scene. The ceiling is a single hand-painted trompe-l'œil, the chandelier a small crystal basket suspended from a gilt rosette. A pair of hand-painted side cabinets in cream and gold hold the family's collection of famille-rose porcelain.</p>
+      <p class="credit">Sofas — ritong bespoke, deep-buttoned velvet · arch, hand-carved gilt</p>
+    </div>
+  </div>
+</section>
+
+<!-- Space 3: Guest Bedroom -->
+<section class="container">
+  <div class="space full">
+    <div class="space-header">
+      <div>
+        <div class="space-num">03</div>
+        <h2 class="space-title">The Guest Bedroom<small>A Royal Welcome</small></h2>
+      </div>
+      <p class="space-caption">A hand-carved and gilt bed with a green tufted back, dressed in silk and crowned with a valance in red and gold.</p>
+    </div>
+    <div class="space-image landscape">
+      <img src="assets/04-guest-bedroom.jpg" alt="Guest bedroom — gilt bed, green tufted headboard, red silk">
+    </div>
+    <div class="narrow space-body">
+      <p>The guest bedroom is the home's most regal expression. The bed is the room's showpiece — a fully hand-carved and gilded piece, the headboard a deep-buttoned green velvet panel framed by carved shells and foliage, the valance a sweep of red-and-gold silk. Walls are panelled in the same cream-and-gilt language as the rest of the house, with a hand-painted overdoor continuing the chinoiserie theme. Bedding is in ivory silk with a thin emerald stripe, pillows in red and gold. A small writing desk and a single armchair in green velvet complete the room; tall curtains in unlined cream silk filter the light.</p>
+      <p class="credit">Bed — hand-carved, hand-gilded · valance, red-and-gold silk</p>
+    </div>
+  </div>
+</section>
+
+<!-- Space 4: The Boudoir -->
+<section class="container">
+  <div class="space split reverse">
+    <div class="space-header">
+      <div>
+        <div class="space-num">04</div>
+        <h2 class="space-title">The Boudoir<small>An Intimate Corner</small></h2>
+      </div>
+      <p class="space-caption">A single green velvet chair, a gilt frame and a fall of pink silk — the home's quietest moment.</p>
+    </div>
+    <div class="space-image portrait">
+      <img src="assets/05-boudoir.jpg" alt="Boudoir — green velvet chair and pink silk">
+    </div>
+    <div class="narrow space-body">
+      <p>The boudoir is the smallest and most personal room in the house. A single deep-buttoned armchair in emerald-green velvet, hand-carved and gilt, sits beneath a tall gilt-framed mirror; beside it, a small round side table in cream and gold holds a single spray of dried roses. The walls are panelled in cream, the curtains a fall of powder-pink silk that pools gently on the parquet floor. It is the home's quietest moment — the room the owner retreats to with a book and a cup of tea — and the one most often photographed.</p>
+      <p class="credit">Chair — hand-carved, deep-buttoned velvet · curtains, powder-pink silk</p>
+    </div>
+  </div>
+</section>
+
+<!-- Space 5: Daughter's Room -->
+<section class="container">
+  <div class="space full">
+    <div class="space-header">
+      <div>
+        <div class="space-num">05</div>
+        <h2 class="space-title">The Daughter's Room<small>French Florals for a Young Lady</small></h2>
+      </div>
+      <p class="space-caption">A floral pink-and-green canopy softens the same French vocabulary into something gentler and younger.</p>
+    </div>
+    <div class="space-image landscape">
+      <img src="assets/06-daughters-room.jpg" alt="Daughter's room — pink and green floral canopy">
+    </div>
+    <div class="narrow space-body">
+      <p>The daughter's room takes the home's French vocabulary and softens it for a young lady. A white-painted headboard in a scalloped silhouette sits beneath a sweeping canopy of pink-and-green floral fabric; bedding is in the same print, layered with a single cream coverlet. Walls are panelled in white, the gilt linework kept to a whisper. A small vanity table in white and gold stands beside the window, and a pair of white-painted wardrobes line the inner wall. The room keeps the discipline of the rest of the house — same panelling geometry, same hand-painted joinery — while letting the colour and the fabric do the work of being young.</p>
+      <p class="credit">Canopy &amp; bedding — French-imported floral fabric · vanity, hand-painted</p>
+    </div>
+  </div>
+</section>
+
+<!-- Space 6: The Lounge -->
+<section class="container">
+  <div class="space split">
+    <div class="space-header">
+      <div>
+        <div class="space-num">06</div>
+        <h2 class="space-title">The Lounge<small>Where the Family Actually Lives</small></h2>
+      </div>
+      <p class="space-caption">A deep-buttoned green velvet sofa, a pair of gilt armchairs and a low marble table — the family's everyday room.</p>
+    </div>
+    <div class="space-image landscape">
+      <img src="assets/07-lounge.jpg" alt="Lounge — green velvet sofa and gilt armchairs">
+    </div>
+    <div class="narrow space-body">
+      <p>The lounge is the room the family actually lives in. A deep-buttoned three-seater in emerald velvet faces a low marble coffee table; a pair of hand-carved armchairs in gilt and ivory silk flank the sofa. The panelling here is the simplest in the house — clean cream rectangles, no painted scene, no central arch — so the room can absorb a television concealed behind a pair of hand-painted cabinet doors. A floor lamp in brushed brass and a single hand-knotted rug in soft greens and pinks warm the corners. It is the most relaxed of the six spaces, and the one closest to the family's everyday life.</p>
+      <p class="credit">Sofa — ritong bespoke, deep-buttoned velvet · rug, hand-knotted</p>
+    </div>
+  </div>
+</section>
+
+<!-- Project nav -->
+<section class="container">
+  <div class="project-nav">
+    <a class="project-nav-link prev" href="#">
+      <span class="label">← Previous Project</span>
+      <span><span class="arrow">Hangzhou</span> Rose Garden Residence</span>
+    </a>
+    <a class="project-nav-link next" href="#">
+      <span class="label">Next Project →</span>
+      <span>A Modern Residence <span class="arrow">(Coming Soon)</span></span>
+    </a>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <div class="label">Private Consultation</div>
+  <h2>Begin Your Own Residence.</h2>
+  <p>ritong delivers turnkey custom furniture and complete soft furnishing for high-end residences, hotels and commercial spaces worldwide — from concept and bespoke production to international logistics, on-site installation and styling. Speak with our private-residence team.</p>
+  <a class="cta-button" href="../../headquarters.html">Book a Private Consultation</a>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <img class="footer-logo-img" src="../../assets/logo-nav-dark.png" alt="RITONG Home Furnishing">
+    <div class="footer-meta copyright">&copy; 2026 RITONG. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var nav = document.querySelector('.nav');
+  var navToggle = document.querySelector('.nav-toggle');
+  if(!nav || !navToggle) return;
+  navToggle.addEventListener('click', function(){
+    var open = nav.classList.toggle('nav--open');
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  document.querySelectorAll('.nav-links a').forEach(function(a){
+    a.addEventListener('click', function(){
+      nav.classList.remove('nav--open');
+      navToggle.setAttribute('aria-expanded','false');
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

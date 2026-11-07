@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=0.75">
+<title>Mandarin Oriental Al Faisaliah · RITONG — Bespoke Furniture &amp; Turnkey FF&amp;E Solutions</title>
+<style>
+  :root{--color-primary:#6B513F;--color-secondary:#B9A77D;--color-bg:#FBF8F2;--color-ink:#1F1A14;--color-mute:#6E6357;--color-line:#E5DCC9;--ff-heading:Georgia,"Times New Roman",serif;--ff-body:"Helvetica Neue",Arial,"Segoe UI",sans-serif}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--color-bg);color:var(--color-ink);font-family:var(--ff-body);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%;height:auto}
+  .container{max-width:1280px;margin:0 auto;padding:0 48px}
+
+  .nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:24px 48px;background:transparent;border-bottom:1px solid transparent;transition:background 0.5s ease,border-color 0.5s ease,padding 0.3s ease}
+  .nav--scrolled{background:rgba(251,248,242,0.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--color-line);padding:16px 48px}
+  .nav-brand{display:flex;align-items:center;gap:0}
+  .nav-logo{height:38px;width:auto;display:block}
+  .nav-logo--dark{display:none}
+  .nav--scrolled .nav-logo--white{display:none}
+  .nav--scrolled .nav-logo--dark{display:block}
+  .nav-crumb{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#FBF8F2;transition:color 0.5s ease}
+  .nav--scrolled .nav-crumb{color:var(--color-primary)}
+  .nav-crumb a{border-bottom:1px solid transparent;transition:border-color 0.2s}
+  .nav-crumb a:hover{border-color:currentColor}
+
+  .case-hero{padding:140px 0 48px;text-align:center;background:linear-gradient(180deg,#F4EFE3 0%,var(--color-bg) 100%)}
+  .case-hero .eyebrow{font-size:10px;letter-spacing:0.4em;text-transform:uppercase;color:var(--color-secondary);margin-bottom:20px}
+  .case-hero h1{font-family:var(--ff-heading);font-size:clamp(32px,4vw,52px);font-weight:400;color:var(--color-primary);line-height:1.15;margin-bottom:16px}
+  .case-hero .loc{font-size:13px;letter-spacing:0.2em;text-transform:uppercase;color:var(--color-mute)}
+
+  .board{padding:48px 0 64px}
+  .board-img{max-width:900px;margin:0 auto;border:1px solid var(--color-line);padding:24px;background:#fff}
+  .board-img img{width:100%;height:auto}
+
+  .narrative{padding:48px 0 32px}
+  .narrative .eyebrow{font-size:11px;letter-spacing:0.4em;text-transform:uppercase;color:var(--color-secondary);margin-bottom:20px;text-align:center}
+  .narrative h2{font-family:var(--ff-heading);font-size:clamp(22px,2.4vw,30px);font-weight:400;color:var(--color-primary);line-height:1.3;max-width:720px;margin:0 auto 32px;text-align:center}
+  .narrative p{font-size:16px;line-height:1.85;color:var(--color-mute);max-width:680px;margin:0 auto 24px;text-align:center}
+
+  .scope{padding:48px 0 96px}
+  .scope h3{font-family:var(--ff-heading);font-size:clamp(20px,2vw,26px);font-weight:400;color:var(--color-primary);margin-bottom:40px;text-align:center}
+  .scope-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;max-width:960px;margin:0 auto}
+  .scope-item h4{font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:var(--color-secondary);margin-bottom:12px}
+  .scope-item p{font-size:14px;line-height:1.75;color:var(--color-mute)}
+
+  .project-nav{padding:48px 0;border-top:1px solid var(--color-line);border-bottom:1px solid var(--color-line);display:flex;justify-content:space-between;align-items:center;max-width:960px;margin:0 auto}
+  .project-nav a{font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:var(--color-primary);transition:opacity 0.2s}
+  .project-nav a:hover{opacity:0.6}
+
+  .footer{padding:72px 0 36px;border-top:1px solid var(--color-line);text-align:center}
+  .footer-logo-img{height:38px;width:auto;max-width:55%;margin:0 auto 18px;display:block}
+  .footer-tag{font-size:11px;letter-spacing:0.3em;text-transform:uppercase;color:var(--color-mute);margin-bottom:28px}
+  .footer-contact{font-size:13px;color:var(--color-mute);line-height:2;margin-bottom:20px}
+  .footer-contact a{color:var(--color-primary);border-bottom:1px solid var(--color-line);transition:border-color 0.2s}
+  .footer-contact a:hover{border-color:var(--color-primary)}
+  .footer-meta{font-size:12px;color:var(--color-mute);letter-spacing:0.05em}
+  .footer-meta a{margin:0 12px;transition:color 0.2s}
+  .footer-meta a:hover{color:var(--color-primary)}
+  .footer-meta.copyright{margin-top:16px}
+
+  @media (max-width: 960px){
+    .container{padding:0 28px}
+    .nav{padding:16px 28px}
+    .nav--scrolled{padding:12px 28px}
+    .case-hero{padding:120px 0 40px}
+    .scope-grid{grid-template-columns:1fr;gap:32px}
+    .board-img{padding:16px}
+  }
+  @media (max-width: 600px){
+    .container{padding:0 20px}
+    .nav{padding:14px 20px}
+    .nav-logo{height:30px}
+    .case-hero h1{font-size:clamp(26px,7vw,36px)}
+    .footer{padding:56px 0 32px}
+    .footer-logo-img{height:32px}
+    .footer-contact{font-size:12px}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <a class="nav-brand" href="../../index.html" aria-label="RITONG — Home">
+    <img class="nav-logo nav-logo--white" src="../../assets/logo-nav-white.png" alt="RITONG">
+    <img class="nav-logo nav-logo--dark" src="../../assets/logo-nav-dark.png" alt="RITONG" style="display:none">
+  </a>
+  <div class="nav-crumb"><a href="../../projects.html">&larr; Back to Projects</a></div>
+</header>
+
+<section class="case-hero">
+  <div class="container">
+    <div class="eyebrow">Hotel Project</div>
+    <h1>Mandarin Oriental Al Faisaliah</h1>
+    <div class="loc">Riyadh, Saudi Arabia · 2020</div>
+  </div>
+</section>
+
+<section class="board">
+  <div class="container">
+    <div class="board-img">
+      <img src="assets/hero.jpg" alt="Mandarin Oriental Al Faisaliah">
+    </div>
+  </div>
+</section>
+
+<section class="narrative">
+  <div class="container">
+    <div class="eyebrow">Project Overview</div>
+    <h2>321 rooms and suites of refined luxury in one of Riyadh's most distinguished hotels.</h2>
+    <p>The Mandarin Oriental Al Faisaliah sets a benchmark for hospitality in Riyadh. RITONG delivered custom furniture, wardrobes, vanity cabinets and wall panelling for all 321 guest rooms and suites, plus public areas — a comprehensive FF&E scope that demonstrated our capacity for large-scale, high-standard hotel delivery.</p>
+  </div>
+</section>
+
+<section class="scope">
+  <div class="container">
+    <h3>Scope of Work</h3>
+    <div class="scope-grid">
+      <div class="scope-item">
+        <h4>Furniture</h4>
+        <p>Bespoke furniture for 321 rooms, suites and public areas.</p>
+      </div>
+      <div class="scope-item">
+        <h4>Joinery &amp; Millwork</h4>
+        <p>Wardrobes, vanity cabinets, wall panelling and fitted cabinetry throughout.</p>
+      </div>
+      <div class="scope-item">
+        <h4>Coordination</h4>
+        <p>Complete project management from design approval through production, QC and delivery.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="project-nav">
+    <a href="../hilton-conrad/case-sheet-hilton-conrad.html">&larr; Hilton Conrad</a>
+    <a href="../yun-gu-hotel/case-sheet-yun-gu-hotel.html">Yun Gu Hotel &rarr;</a>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <img class="footer-logo-img" src="../../assets/logo-nav-dark.png" alt="RITONG Home Furnishing">
+    <div class="footer-meta copyright">&copy; 2026 RITONG. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var nav = document.querySelector('.nav');
+  function onScroll(){
+    if(window.scrollY > 80){ nav.classList.add('nav--scrolled'); }
+    else { nav.classList.remove('nav--scrolled'); }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
+
+</body>
+</html>

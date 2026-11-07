@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=0.75">
+<title>Humen Private Residence · Project | ritong</title>
+<style>
+  :root{
+    --color-primary:#6B513F;       /* warm taupe — text accents, dividers */
+    --color-secondary:#B9A77D;     /* muted gold — captions, highlights */
+    --color-bg:#FBF8F2;            /* ivory — page background */
+    --color-ink:#1F1A14;           /* deep brown — body text */
+    --color-mute:#6E6357;          /* muted brown — secondary text */
+    --color-line:#E5DCC9;          /* hairline */
+    --ff-heading: Georgia, "Times New Roman", serif;
+    --ff-body: "Helvetica Neue", Arial, "Segoe UI", sans-serif;
+    --ff-mono: "SF Mono", "Menlo", monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--color-bg);color:var(--color-ink);font-family:var(--ff-body);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%;height:auto}
+  .container{max-width:1280px;margin:0 auto;padding:0 48px}
+  .narrow{max-width:880px;margin:0 auto;padding:0 48px}
+
+  /* ===== Top Nav ===== */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:20px 48px;background:rgba(251,248,242,0.85);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--color-line);
+  }
+  .nav-brand{display:flex;align-items:center;gap:14px}
+  .nav-logo{height:44px;width:auto;display:block}
+  .nav-monogram{height:44px;width:auto;display:block}
+  .nav-links{position:absolute;left:50%;transform:translateX(-50%);display:flex;gap:36px;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-primary)}
+  .nav-links a{padding:4px 0;border-bottom:1px solid transparent;transition:border-color 0.2s}
+  .nav-links a:hover{border-color:var(--color-primary)}
+  .nav-links a.is-active{border-color:var(--color-primary)}
+  .nav-cta{font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:#FBF8F2;background:var(--color-primary);padding:10px 22px;border-radius:1px}
+  .nav-cta:hover{background:#5A4336}
+  .nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:transparent;border:0;cursor:pointer;padding:0;color:var(--color-primary)}
+  .nav-toggle span{display:block;width:22px;height:1.5px;background:currentColor;margin:0 auto;transition:transform 0.3s,opacity 0.3s}
+  .nav--open .nav-toggle span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+  .nav--open .nav-toggle span:nth-child(2){opacity:0}
+  .nav--open .nav-toggle span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+
+  /* ===== Hero ===== */
+  .hero{position:relative;height:100vh;min-height:680px;overflow:hidden;margin-top:0}
+  .hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%}
+  .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.15) 0%,rgba(0,0,0,0) 35%,rgba(0,0,0,0) 60%,rgba(0,0,0,0.55) 100%)}
+  .hero-text{position:absolute;left:0;right:0;bottom:96px;text-align:center;color:#FBF8F2;padding:0 32px}
+  .hero-eyebrow{font-size:11px;letter-spacing:0.4em;text-transform:uppercase;opacity:0.85;margin-bottom:24px}
+  .hero-title{font-family:var(--ff-heading);font-size:clamp(40px,6vw,76px);font-weight:400;line-height:1.1;letter-spacing:0.02em;margin-bottom:18px}
+  .hero-loc{font-size:13px;letter-spacing:0.28em;text-transform:uppercase;opacity:0.8}
+
+  /* ===== Breadcrumb ===== */
+  .crumb{padding:40px 0 0;display:flex;justify-content:space-between;align-items:center;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-mute)}
+  .crumb a:hover{color:var(--color-primary)}
+
+  /* ===== Narrative subtitle ===== */
+  .narrative{padding:84px 0 64px;text-align:center}
+  .narrative p{font-family:var(--ff-heading);font-style:italic;font-size:clamp(20px,2.4vw,28px);line-height:1.55;color:var(--color-primary);max-width:820px;margin:0 auto;font-weight:400}
+
+  /* ===== Info Block ===== */
+  .info-block{border-top:1px solid var(--color-line);border-bottom:1px solid var(--color-line);padding:48px 0;margin:0 0 80px}
+  .info-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+  .info-cell{padding:8px 24px;border-right:1px solid var(--color-line)}
+  .info-cell:last-child{border-right:none}
+  .info-label{font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--color-mute);margin-bottom:10px}
+  .info-value{font-family:var(--ff-heading);font-size:18px;color:var(--color-ink);line-height:1.35}
+
+  /* ===== Intro prose ===== */
+  .intro{padding:0 0 96px}
+  .intro .label{font-size:10px;letter-spacing:0.4em;text-transform:uppercase;color:var(--color-secondary);margin-bottom:20px;text-align:center}
+  .intro p{font-size:17px;line-height:1.85;color:var(--color-ink)}
+  .intro p + p{margin-top:1.2em}
+
+  /* ===== Space sections ===== */
+  .space{padding:0 0 120px}
+  .space-header{display:flex;align-items:baseline;justify-content:space-between;border-top:1px solid var(--color-line);padding-top:32px;margin-bottom:36px}
+  .space-num{font-family:var(--ff-mono);font-size:13px;color:var(--color-secondary);letter-spacing:0.15em}
+  .space-title{font-family:var(--ff-heading);font-size:30px;color:var(--color-primary);font-weight:400;line-height:1.2}
+  .space-title small{display:block;font-size:13px;color:var(--color-mute);letter-spacing:0.22em;text-transform:uppercase;margin-top:8px;font-family:var(--ff-body)}
+  .space-caption{font-family:var(--ff-heading);font-style:italic;color:var(--color-mute);font-size:15px;text-align:right;max-width:380px;line-height:1.6}
+  .space-image{margin-bottom:32px;overflow:hidden}
+  .space-image.portrait img{width:auto;max-height:780px;margin:0 auto}
+  .space-image.landscape img{width:100%}
+  .space-body{max-width:780px;margin:0 auto;font-size:16px;line-height:1.85;color:var(--color-ink)}
+  .space-body .credit{margin-top:16px;font-size:12px;color:var(--color-mute);text-align:right;font-style:italic}
+
+  /* ===== Alternating layouts ===== */
+  .space.split .space-image{width:55%;margin-left:auto}
+  .space.split.reverse .space-image{width:55%;margin-left:0;margin-right:auto}
+  .space.full .space-image{width:100%}
+
+  /* ===== Project navigation ===== */
+  .project-nav{border-top:1px solid var(--color-line);padding:64px 0;display:flex;justify-content:space-between;align-items:center}
+  .project-nav-link{font-family:var(--ff-heading);font-size:18px;color:var(--color-primary);display:flex;flex-direction:column;gap:6px;transition:opacity 0.2s}
+  .project-nav-link.next{text-align:right}
+  .project-nav-link .label{font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--color-mute);font-family:var(--ff-body)}
+  .project-nav-link:hover{opacity:0.7}
+  .project-nav-link .arrow{display:inline-block;transition:transform 0.2s}
+  .project-nav-link.prev:hover .arrow{transform:translateX(-4px)}
+  .project-nav-link.next:hover .arrow{transform:translateX(4px)}
+
+  /* ===== CTA ===== */
+  .cta{padding:120px 0;text-align:center;background:linear-gradient(180deg,var(--color-bg) 0%,#F1EADC 100%);margin-top:0}
+  .cta .label{font-size:10px;letter-spacing:0.4em;text-transform:uppercase;color:var(--color-secondary);margin-bottom:20px}
+  .cta h2{font-family:var(--ff-heading);font-size:clamp(28px,3.5vw,44px);font-weight:400;color:var(--color-primary);line-height:1.3;margin-bottom:24px;max-width:680px;margin-left:auto;margin-right:auto}
+  .cta p{font-size:16px;color:var(--color-mute);max-width:540px;margin:0 auto 40px;line-height:1.7}
+  .cta-button{display:inline-block;font-size:12px;letter-spacing:0.25em;text-transform:uppercase;color:#FBF8F2;background:var(--color-primary);padding:18px 48px;border:1px solid var(--color-primary);transition:all 0.2s}
+  .cta-button:hover{background:transparent;color:var(--color-primary)}
+
+  /* ===== Footer ===== */
+  .footer{padding:64px 0 36px;border-top:1px solid var(--color-line);text-align:center}
+  .footer-logo-img{height:38px;width:auto;max-width:55%;margin:0 auto 18px;display:block}
+  .footer-tag{font-size:11px;letter-spacing:0.3em;text-transform:uppercase;color:var(--color-mute);margin-bottom:24px}
+  .footer-meta{font-size:12px;color:var(--color-mute);letter-spacing:0.05em}
+  .footer-meta a{margin:0 12px}
+
+  /* ===== Responsive ===== */
+  @media (max-width: 960px){
+    .container,.narrow{padding:0 28px}
+    .nav{padding:16px 28px}
+        .nav-toggle{display:flex}
+    .nav-links{position:fixed;top:0;left:0;right:0;transform:none;display:none;flex-direction:column;gap:0;background:rgba(251,248,242,0.98);backdrop-filter:blur(10px);padding:88px 24px 24px;border-bottom:1px solid var(--color-line);color:var(--color-primary)}
+    .nav-links a{font-size:13px;letter-spacing:0.18em;padding:16px 0;border-bottom:1px solid var(--color-line)}
+    .nav--open .nav-links{display:flex}
+
+    .info-grid{grid-template-columns:repeat(2,1fr);gap:32px 0}
+    .info-cell{border-right:none;padding:0 16px}
+    .info-cell:nth-child(2n){border-left:1px solid var(--color-line)}
+    .space.split .space-image,.space.split.reverse .space-image{width:100%;margin:0}
+    .hero-text{bottom:60px}
+  }
+
+  @media (max-width: 600px){
+    .container,.narrow{padding:0 20px}
+    .nav{padding:14px 20px}
+    .nav-links{padding:84px 20px 20px}
+    .nav-logo,.nav-monogram{height:30px}
+    .nav-wordmark{font-size:18px}
+    .nav-cta{padding:8px 14px;font-size:10px}
+    .page-hero{padding:130px 0 48px}
+    .page-hero .eyebrow{font-size:10px;letter-spacing:0.24em;margin-bottom:18px}
+    .page-hero h1{font-size:clamp(28px,8vw,40px)}
+    .page-hero p{font-size:14px;line-height:1.75}
+    .hero{min-height:560px}
+    .hero-title{font-size:clamp(26px,7vw,40px)}
+    .hero-eyebrow{font-size:9px;letter-spacing:0.26em;margin-bottom:16px}
+    .hero-loc{font-size:11px;letter-spacing:0.2em}
+    .hero-text{bottom:64px;padding:0 20px}
+    .about-intro h2{font-size:clamp(22px,6vw,28px)}
+    .about-intro p{font-size:14px;line-height:1.75}
+    .brands{padding:0 0 64px}
+    .brands-header{margin-bottom:36px}
+    .brands-header .eyebrow{font-size:10px;letter-spacing:0.24em}
+    .brands-header h3{font-size:clamp(20px,6vw,26px)}
+    .brands-grid{gap:16px}
+    .brand-item{padding:22px 14px}
+    .brand-item .name{font-size:16px}
+    .brand-item .desc{font-size:12px;line-height:1.6}
+    .founder{padding:64px 0}
+    .founder-quote{font-size:clamp(18px,5.5vw,24px)}
+    .founder-body{font-size:14px}
+    .founder-label{font-size:10px;letter-spacing:0.26em}
+    .timeline{padding:64px 0}
+    .timeline-header{margin-bottom:40px}
+    .timeline-header .eyebrow{font-size:10px;letter-spacing:0.24em}
+    .timeline-header h3{font-size:clamp(20px,6vw,26px)}
+    .proj-grid{gap:20px}
+    .cta{padding:56px 0}
+    .cta .label{font-size:10px;letter-spacing:0.3em;margin-bottom:18px}
+    .cta h2{font-size:clamp(22px,6.5vw,30px);margin-bottom:20px}
+    .cta p{font-size:13px;line-height:1.7;margin-bottom:32px}
+    .cta-button{padding:14px 36px;font-size:11px}
+    .footer{padding:56px 0 32px}
+    .footer-logo-img{height:32px}
+    .footer-tag{font-size:10px;letter-spacing:0.22em;margin-bottom:22px}
+    .footer-meta{font-size:11px}
+    .footer-meta a{margin:0 8px}
+  }
+</style>
+</head>
+<body>
+
+<!-- Top Nav -->
+<header class="nav">
+  <a class="nav-brand" href="../../index.html" aria-label="ritong — Home">
+    <img class="nav-monogram" src="assets/logo-monogram.png" alt="ritong">
+  </a>
+  <nav class="nav-links">
+    <a href="../../about.html">About</a>
+    <a href="../../index.html#services">Services</a>
+    <a href="../../projects.html" class="is-active" aria-current="page">Projects</a>
+    <a href="../../headquarters.html">Contact</a>
+  </nav>
+  <a class="nav-cta" href="../../headquarters.html">Book Consultation</a>
+  <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <img class="hero-img" src="assets/01-hero-living.jpg" alt="Humen Private Residence — Sitting Room">
+  <div class="hero-overlay"></div>
+  <div class="hero-text">
+    <div class="hero-eyebrow">Private Residence</div>
+    <h1 class="hero-title">Humen Private Residence</h1>
+    <div class="hero-loc">Dongguan · Guangdong · China</div>
+  </div>
+</section>
+
+<!-- Breadcrumb / Back -->
+<div class="container">
+  <div class="crumb">
+    <a href="../../projects.html">← Back to Projects</a>
+    <span>01 / 04</span>
+  </div>
+</div>
+
+<!-- Narrative subtitle -->
+<section class="narrow">
+  <div class="narrative">
+    <p>An East-meets-West French Baroque residence in Dongguan — where gilded ornament, tiffany-blue lacquer and hand-painted chinoiserie bring the grandeur of a European palace into a contemporary Chinese home.</p>
+  </div>
+</section>
+
+<!-- Info Block -->
+<section class="container">
+  <div class="info-block">
+    <div class="info-grid">
+      <div class="info-cell">
+        <div class="info-label">Project Type</div>
+        <div class="info-value">Private Residence</div>
+      </div>
+      <div class="info-cell">
+        <div class="info-label">Location</div>
+        <div class="info-value">Dongguan, China</div>
+      </div>
+      <div class="info-cell">
+        <div class="info-label">Year</div>
+        <div class="info-value">2022</div>
+      </div>
+      <div class="info-cell">
+        <div class="info-label">Style</div>
+        <div class="info-value">French Baroque</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Intro prose -->
+<section class="narrow">
+  <div class="intro">
+    <div class="label">The Project</div>
+    <p>This private mansion in Humen, Dongguan is built on the bones of French Baroque with the grace of Rococo — gilded hand-carving, tiffany-blue lacquered surfaces and hand-painted chinoiserie wall panels carry the splendour of a European court into a contemporary home. ritong delivered the project as a full turnkey package: bespoke furniture, wall panelling and complete soft furnishing across six spaces — entry, foyer, sitting room, master bedroom, dressing area and a daughter's suite — tied together by one consistent language of gold, velvet, marble and vened glass.</p>
+    <p>The owners hold a lifelong love for European classical art and asked for a home that feels as ceremonial as a palace yet as warm and functional as a family house. Guided by the principle of "unified yet never repeated", the design team kept the core materials and palette consistent while giving each space its own character through furniture silhouette, fabric pattern and lighting layering.</p>
+  </div>
+</section>
+
+<!-- Space 1: Entry -->
+<section class="container">
+  <div class="space full">
+    <div class="space-header">
+      <div>
+        <div class="space-num">01</div>
+        <h2 class="space-title">The Entry<small>Tiffany-Blue Gilded Console</small></h2>
+      </div>
+      <p class="space-caption">A tiffany-blue lacquered console with full hand-gilded carving sets the baroque tone of the entire mansion.</p>
+    </div>
+    <div class="space-image portrait">
+      <img src="assets/02-entry-console.jpg" alt="Entry — tiffany-blue gilded console">
+    </div>
+    <div class="narrow space-body">
+      <p>The entry is the opening line of the house. At 1.4 metres, the console is finished in tiffany-blue lacquer beneath full hand-gilded carving — intertwining lotus scrolls, acanthus and mythical beasts stacked in layers that echo eighteenth-century French court furniture. The top is Greek-imported Calacatta marble, a cool counterpoint to the blue-and-gold facade. Above it, a pair of cloisonné vases and a spray of Rococo dried florals set the first visual anchor for every guest.</p>
+      <p class="credit">Console — ritong in-house workshop · 47-stage gilding process</p>
+    </div>
+  </div>
+</section>
+
+<!-- Space 2: Foyer -->
+<section class="container">
+  <div class="space split">
+    <div class="space-header">
+      <div>
+        <div class="space-num">02</div>
+        <h2 class="space-title">The Foyer<small>Romance of Black &amp; Gold</small></h2>
+      </div>
+      <p class="space-caption">Black lacquer and gold leaf beside a classical oil painting turn every passage into a ritual.</p>
+    </div>
+    <div class="space-image">
+      <img src="assets/03-foyer.jpg" alt="Foyer — black lacquer and gold">
+    </div>
+    <div class="narrow space-body">
+      <p>From the entry, a roughly six-metre foyer is a moment of transition. Both walls are clad in black lacquer with gilded panelling, the gold motifs painted by hand on site — every curve demanding three layers of leaf and five of varnish. The floor is dark-grey marble parquet, a calm weight against the black-and-gold walls. At the far end, an eighteenth-century-style portrait hangs in a gilded frame, establishing the artistic key of the whole house.</p>
+      <p class="credit">Panelling — 24k gold leaf · hand-painted on site · 47 days</p>
+    </div>
+  </div>
+</section>
+
+<!-- Space 3: Master Bedroom -->
+<section class="container">
+  <div class="space full">
+    <div class="space-header">
+      <div>
+        <div class="space-num">03</div>
+        <h2 class="space-title">The Master Bedroom<small>Sleeping in a Gilded Reverie</small></h2>
+      </div>
+      <p class="space-caption">A fully gilded carved headboard, a deep-green velvet bench and a crystal chandelier compose a three-dimensional French dream.</p>
+    </div>
+    <div class="space-image">
+      <img src="assets/04-master-bedroom.jpg" alt="Master bedroom — gilded headboard">
+    </div>
+    <div class="narrow space-body">
+      <p>The master bedroom concentrates the most craft in the house. The headboard is a fully gilded carved work, hand-finished by three carvers over ninety days. The backdrop wall uses cream panelling; its linework draws on Greek acanthus, paired with 1.5-centimetre plaster mouldings and concealed LED strips for a soft layered glow. Bedding in deep-green velvet meets the gold of the headboard in a classic court palette; the crystal chandelier is bespoke, after a nineteenth-century French model, hand-strung with 12,000 Swarovski crystals.</p>
+      <p class="credit">Headboard — solid-wood hand carving · 24k gold-leaf veneer</p>
+    </div>
+  </div>
+</section>
+
+<!-- Space 4: Dressing -->
+<section class="container">
+  <div class="space split reverse">
+    <div class="space-header">
+      <div>
+        <div class="space-num">04</div>
+        <h2 class="space-title">The Dressing<small>Craft in Every Curve</small></h2>
+      </div>
+      <p class="space-caption">A fully gilded dressing table is the close-up of the craft.</p>
+    </div>
+    <div class="space-image portrait">
+      <img src="assets/05-detail-dressing.jpg" alt="Dressing area — gilded table detail">
+    </div>
+    <div class="narrow space-body">
+      <p>The dressing table is the close-up of the master suite. Every visible face — facade, drawers, mirror frame, legs — is fully gilded carving. The mirror's back panel and frame build gold through five stages — carving, lacquering, leafing, burnishing, top-coating — doubling the bedroom in reflection. The tri-fold mirror adjusts to the moment; a green-velvet stool echoes the bedding. The marble top is inlaid as a single slab, joints held within 0.3 millimetres, consistent with the house-wide standard.</p>
+      <p class="credit">Detail — solid-wood hand carving · 8-coat gilding · joints ≤0.3mm</p>
+    </div>
+  </div>
+</section>
+
+<!-- Space 5: Sitting Room -->
+<section class="container">
+  <div class="space full">
+    <div class="space-header">
+      <div>
+        <div class="space-num">05</div>
+        <h2 class="space-title">The Sitting Room<small>Light, Marble &amp; Gilded Lines</small></h2>
+      </div>
+      <p class="space-caption">White gilded panelling, a blue floral sofa and marble floors let receiving guests and family time feel equally at ease.</p>
+    </div>
+    <div class="space-image">
+      <img src="assets/06-sitting-room.jpg" alt="Sitting room — blue floral sofa">
+    </div>
+    <div class="narrow space-body">
+      <p>The sitting room is the family core of the house. Walls are mostly white gilded panelling; clean gold lines organise the geometry, a rhythmic contrast to the fully gilded bedroom. A cream-gold three-seater and a blue floral armchair enclose a conversational group; a gilded side table holds the owners' collection of blue-and-white porcelain and bronze objects, carrying family memory. The floor is Italian-imported Calacatta marble parquet with naturally continuous veining and no visible seams across the room.</p>
+      <p class="credit">Sofa &amp; Chairs — ritong in-house soft-furnishing · solid frame · goose-down fill</p>
+    </div>
+  </div>
+</section>
+
+<!-- Space 6: Daughter's Room -->
+<section class="container">
+  <div class="space split">
+    <div class="space-header">
+      <div>
+        <div class="space-num">06</div>
+        <h2 class="space-title">The Daughter's Room<small>A Softer French Note</small></h2>
+      </div>
+      <p class="space-caption">The gentler side of French style — a soft powder-blue floral language made for the home's young daughter.</p>
+    </div>
+    <div class="space-image">
+      <img src="assets/07-daughters-room.jpg" alt="Daughter's room — powder-blue floral">
+    </div>
+    <div class="narrow space-body">
+      <p>The daughter's room continues the French vocabulary but in a softer powder-blue floral key, answering the personality of the young family member. Bedding, drapery and armchair use French-imported floral fabric that picks up the pale-blue panelled wall. The wall line switches from gold to silver leaf — equally fine yet lighter — the most tender corner of the whole mansion.</p>
+      <p class="credit">Soft Furnishings — French-imported floral fabric · silver-leaf detailing</p>
+    </div>
+  </div>
+</section>
+
+<!-- Project nav -->
+<section class="container">
+  <div class="project-nav">
+    <a class="project-nav-link prev" href="#">
+      <span class="label">← Back to Projects</span>
+      <span><span class="arrow">All</span> Projects</span>
+    </a>
+    <a class="project-nav-link next" href="#">
+      <span class="label">Next Project →</span>
+      <span>Hangzhou Rose Garden <span class="arrow">Residence</span></span>
+    </a>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <div class="label">Private Consultation</div>
+  <h2>Begin Your Own Residence.</h2>
+  <p>ritong delivers turnkey custom furniture and complete soft furnishing for high-end residences, hotels and commercial spaces worldwide — from concept and bespoke production to international logistics, on-site installation and styling. Speak with our private-residence team.</p>
+  <a class="cta-button" href="../../headquarters.html">Book a Private Consultation</a>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <img class="footer-logo-img" src="../../assets/logo-nav-dark.png" alt="RITONG Home Furnishing">
+    <div class="footer-meta copyright">&copy; 2026 RITONG. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var nav = document.querySelector('.nav');
+  var navToggle = document.querySelector('.nav-toggle');
+  if(!nav || !navToggle) return;
+  navToggle.addEventListener('click', function(){
+    var open = nav.classList.toggle('nav--open');
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  document.querySelectorAll('.nav-links a').forEach(function(a){
+    a.addEventListener('click', function(){
+      nav.classList.remove('nav--open');
+      navToggle.setAttribute('aria-expanded','false');
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

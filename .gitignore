@@ -1,0 +1,24 @@
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.log
+*.bak
+
+# WorkBuddy internal
+.wbapp_*
+*.genie
+
+# Old/backup images
+*-old.jpg
+*-old.png
